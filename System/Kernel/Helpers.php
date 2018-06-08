@@ -3,10 +3,10 @@
  * TheYkk's fw
  * Helpers
  *
- * Author   : Turan Karatuğ
- * Web      : http://www.titanphp.com
- * Docs     : http://kilavuz.titanphp.com
- * Github   : http://github.com/tkaratug/titan2
+ * Author   : Yusuf Kaan Karakaya
+ * Web      : http://theykk.net
+ *
+ * Github   : http://github.com/theykk/fw
  * License  : MIT
  *
  *************************************************/
@@ -153,8 +153,8 @@ if (!function_exists('redirect')) {
 if (!function_exists('csrf_token')) {
     function csrf_token()
     {
-        Session::set('titan_token', base64_encode(openssl_random_pseudo_bytes(32)));
-        return Session::get('titan_token');
+        Session::set('ykk_token', base64_encode(openssl_random_pseudo_bytes(32)));
+        return Session::get('ykk_token');
     }
 }
 
@@ -168,12 +168,12 @@ if (!function_exists('csrf_token')) {
 if (!function_exists('csrf_check')) {
     function csrf_check()
     {
-        if (Session::has('titan_token')) {
+        if (Session::has('ykk_token')) {
             if (
-                @request('_token') == Session::get('titan_token') ||
-                @Request::headers('X-CSRF-TOKEN') == Session::get('titan_token')
+                @request('_token') == Session::get('ykk_token') ||
+                @Request::headers('X-CSRF-TOKEN') == Session::get('ykk_token')
             ){
-                Session::delete('titan_token');
+                Session::delete('ykk_token');
                 return true;
             } else {
                 return false;

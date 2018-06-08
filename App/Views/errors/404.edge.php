@@ -59,7 +59,7 @@
 <body>
 
 	<div id="logo">
-		<img src="{{ PUBLIC_DIR }}img/titan.png" width="150" />
+		<img src="{{ PUBLIC_DIR }}img/default.png" width="150" />
 	</div>
 	<div id="container">
 		<h3>404!</h3>

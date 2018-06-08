@@ -3,11 +3,10 @@
  * TheYkk's fw
  * Database Configurations
  *
- * Author    : Turan Karatuğ
- * Web        : http://www.titanphp.com
- * Docs    : http://kilavuz.titanphp.com
- * Github    : http://github.com/tkaratug/titan2
- * License    : MIT
+ * Author    : Yusuf Kaan Karakaya
+ * Web       : http://theykk.net
+ * Github    : http://github.com/theykk/fw
+ * License   : MIT
  *
  *************************************************/
 return [

@@ -3,10 +3,10 @@
  * TheYkk's fw
  * Curl Library
  *
- * Author   : Turan Karatuğ
- * Web      : http://www.titanphp.com
- * Docs     : http://kilavuz.titanphp.com
- * Github   : http://github.com/tkaratug/titan2
+ * Author   : Yusuf Kaan Karakaya
+ * Web      : http://theykk.net
+ *
+ * Github   : http://github.com/theykk/fw
  * License  : MIT
  *
  *************************************************/
@@ -53,7 +53,7 @@ class Curl
             $this->cookieFile  = APP_DIR . 'Storage/curl_cookie.txt';
 
         if ($this->userAgent === '')
-            $this->userAgent   = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : 'TitanMVC/PHP '.PHP_VERSION.' (http://github.com/tkaratug/titan2)';
+            $this->userAgent   = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : 'TheYkk/fw '.PHP_VERSION.' (http://github.com/theykk/fw)';
 	}
 
 	/**
