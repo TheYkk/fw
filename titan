@@ -1,0 +1,20 @@
+#!usr/bin/php
+<?php
+/*************************************************
+ * Titan-2 Mini Framework
+ * Titan Console
+ *
+ * Author 	: Turan Karatuğ
+ * Web 		: http://www.titanphp.com
+ * Docs 	: http://kilavuz.titanphp.com
+ * Github	: http://github.com/tkaratug/titan2
+ * License	: MIT
+ *
+ *************************************************/
+require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/System/Kernel/Starter.php';
+
+$params     = array_slice($argv, 1);
+$console    = new System\Libs\Console\Console();
+
+echo $console->run($params);
