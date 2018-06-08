@@ -1,6 +1,6 @@
 <?php
 /*************************************************
- * Titan-2 Mini Framework
+ * TheYkk's fw
  * Form Validation Library
  *
  * Author   : Turan Karatuğ
@@ -38,7 +38,7 @@ class Validation
 		foreach ($rules as $key => $value) {
 			$this->labels[$key] = $value['label'];
             $this->rules[$key]	= $value['rules'];
-            
+
             if (!empty($params))
                 $this->data[$key] = $params[$key];
 		}
@@ -156,7 +156,7 @@ class Validation
                             if ($this->$rule($this->data[$key]) === false)
                                 $this->errors[$key] = lang('validation', $rule . '_error', $this->labels[$key]);
                         }
-                        
+
                     }
 				}
 			}

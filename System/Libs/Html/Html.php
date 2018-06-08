@@ -1,13 +1,13 @@
 <?php
 /*************************************************
- * Titan-2 Mini Framework
+ * TheYkk's fw
  * HTML Builder Library
  *
- * Author 	: Turan Karatuğ
- * Web 		: http://www.titanphp.com
- * Docs 	: http://kilavuz.titanphp.com 
- * Github	: http://github.com/tkaratug/titan2
- * License	: MIT	
+ * Author 	: Yusuf Kaan Karakaya
+ * Web 		: http://theykk.net
+  *
+ * Github	: http://github.com/theykk/fw
+ * License	: MIT
  *
  *************************************************/
 namespace System\Libs\Html;
@@ -197,8 +197,8 @@ class Html
 	public function email($email)
 	{
 		$character_set 	= '+-.0123456789@ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz';
-		$key 			= str_shuffle($character_set); 
-		$cipher_text 	= ''; 
+		$key 			= str_shuffle($character_set);
+		$cipher_text 	= '';
 		$id 			= 'e'.rand(1,999999999);
 
 		for ($i = 0; $i < strlen($email); $i++) {

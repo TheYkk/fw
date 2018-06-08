@@ -1,13 +1,13 @@
 <?php
 /*************************************************
- * Titan-2 Mini Framework
+ * TheYkk's fw
  * Facade Library
  *
- * Author 	: Turan Karatuğ
- * Web 		: http://www.titanphp.com
- * Docs 	: http://kilavuz.titanphp.com 
- * Github	: http://github.com/tkaratug/titan2
- * License	: MIT	
+ * Author 	: Yusuf Kaan Karakaya
+ * Web 		: http://theykk.net
+  *
+ * Github	: http://github.com/theykk/fw
+ * License	: MIT
  *
  *************************************************/
 namespace System\Facades;
@@ -93,8 +93,8 @@ abstract class Facade
 		if (!array_key_exists($accessor, static::$createdInstances)) {
 			static::$createdInstances[$accessor] = new $provider;
 		}
-		
+
 		return call_user_func_array([static::$createdInstances[$accessor], $method], $args);
 	}
-	
+
 }

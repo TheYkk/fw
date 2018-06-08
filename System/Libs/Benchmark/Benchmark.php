@@ -1,13 +1,13 @@
 <?php
 /*************************************************
- * Titan-2 Mini Framework
+ * TheYkk's fw
  * Benchmark Library
  *
- * Author 	: Turan Karatuğ
- * Web 		: http://www.titanphp.com
- * Docs 	: http://kilavuz.titanphp.com 
- * Github	: http://github.com/tkaratug/titan2
- * License	: MIT	
+ * Author 	: Yusuf Kaan Karakaya
+ * Web 		: http://theykk.net
+  *
+ * Github	: http://github.com/theykk/fw
+ * License	: MIT
  *
  *************************************************/
 namespace System\Libs\Benchmark;
@@ -156,7 +156,7 @@ class Benchmark
 			$time = round($microtime*1000);
 		}
 
-		$format = preg_replace('/(%.[\d]+f)/', '%d', $format);		
+		$format = preg_replace('/(%.[\d]+f)/', '%d', $format);
 
 		return sprintf($format, $time, $unit);
 	}

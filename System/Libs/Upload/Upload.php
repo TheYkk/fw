@@ -1,6 +1,6 @@
 <?php
 /*************************************************
-* Titan-2 Mini Framework
+* TheYkk's fw
 * File Upload Library
 *
 * Author   : Turan Karatuğ
@@ -187,7 +187,7 @@ class Upload
 				if (in_array($extension, ['jpg', 'png', 'gif'])) {
 					if ($this->maxWidth > 0 || $this->maxHeight > 0) {
 						list($width, $height) = getimagesize($this->file['tmp_name']);
-						
+
 						if ($width > $this->maxWidth || $height > $this->maxHeight) {
 							$this->error = lang('upload', 'max_dimension_error', ['%s' => $this->maxWidth, '%t' => $this->maxHeight]);
 							return false;

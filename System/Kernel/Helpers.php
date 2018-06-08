@@ -1,6 +1,6 @@
 <?php /** @noinspection ALL */
 /*************************************************
- * Titan-2 Mini Framework
+ * TheYkk's fw
  * Helpers
  *
  * Author   : Turan Karatuğ

@@ -1,4 +1,15 @@
 <?php
+/*************************************************
+ * TheYkk's fw
+ * CDN Library
+ *
+ * Author 	: Yusuf Kaan Karakaya
+ * Web 		: http://theykk.net
+ *
+ * Github	: http://github.com/theykk/fw
+ * License	: MIT
+ *
+ *************************************************/
 namespace System\Libs\CDN;
 
 use System\Libs\Exception\ExceptionHandler;

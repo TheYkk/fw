@@ -1,13 +1,13 @@
 <?php
 /*************************************************
- * Titan-2 Mini Framework
+ * TheYkk's fw
  * Response Library
  *
- * Author 	: Turan Karatuğ
- * Web 		: http://www.titanphp.com
- * Docs 	: http://kilavuz.titanphp.com 
- * Github	: http://github.com/tkaratug/titan2
- * License	: MIT	
+ * Author 	: Yusuf Kaan Karakaya
+ * Web 		: http://theykk.net
+  *
+ * Github	: http://github.com/theykk/fw
+ * License	: MIT
  *
  *************************************************/
 namespace System\Libs\Http;
@@ -80,7 +80,7 @@ class Response
 		return http_response_code();
 	}
 
-	/** 
+	/**
 	 * Get Http Status Message
 	 *
 	 * @param int|null $code
@@ -112,7 +112,7 @@ class Response
 		header("Cache-Control: no-transform,public,max-age=300,s-maxage=900");
 		header('Content-type: application/json');
 		header('Status: '.$this->statusCodes[$code]);
-		
+
 		return json_encode([
 			'status'	=> $code < 300,
 			'message'	=> $data

@@ -1,6 +1,6 @@
 <?php
 /*************************************************
- * Titan-2 Mini Framework
+ * TheYkk's fw
  * Controller
  *
  * Author   : Turan Karatuğ

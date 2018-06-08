@@ -1,6 +1,6 @@
 <?php
 /*************************************************
- * Titan-2 Mini Framework
+ * TheYkk's fw
  * Database Configurations
  *
  * Author    : Turan Karatuğ
