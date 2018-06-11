@@ -62,5 +62,7 @@ return [
 		'userpass'					=> '',
 		'charset'					=> 'utf-8',
 	],
-
+    'jwt'          => [
+        'key'                       => 'A58qILk4IK9ZHi4xyAM7NHJU'
+    ]
 ];

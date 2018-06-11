@@ -18,40 +18,15 @@ class CDN
 {
 
     /**
+     * Auto cdn type detect
      * @param $name
+     * @param $arguments
      * @return mixed
      */
-    public function script($name)
+    public function __call($name, $arguments)
     {
-        return config('cdn.scripts')[$name];
+        // TODO: Implement __call() method.
+        return config('cdn.'.$name)[$arguments[0]];
     }
-
-    /**
-     * @param $name
-     * @return mixed
-     */
-    public function style($name)
-    {
-        return config('cdn.styles')[$name];
-    }
-
-    /**
-     * @param $name
-     * @return mixed
-     */
-    public function file($name)
-    {
-        return config('cdn.files')[$name];
-    }
-
-    /**
-     * @param $name
-     * @return mixed
-     */
-    public function font($name)
-    {
-        return config('cdn.fonts')[$name];
-    }
-
 
 }
