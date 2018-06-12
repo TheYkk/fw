@@ -12,10 +12,13 @@
  *************************************************/
 
 /**
- * Zn debug
+ * Debug by TheYkk
  */
-
-
+if (!function_exists('debug')) {
+    function debug($var){
+        new System\Libs\Debug\Debug($var);
+    }
+}
 
 
 /**
@@ -26,6 +29,7 @@ if (!function_exists('br')) {
 
         echo '<br>';
         if ($hr)  echo '<hr>';
+
     }
 }
 

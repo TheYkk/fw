@@ -11,25 +11,13 @@ class Debug
 {
     protected $styles = array(
         'default' => 'background-color:#18171B; color:#FF8400; line-height:1.2em; font:12px Menlo, Monaco, Consolas, monospace; word-wrap: break-word; white-space: pre-wrap; position:relative; z-index:99999; word-break: break-all',
-        'num' => 'font-weight:bold; color:#1299DA',
-        'const' => 'font-weight:bold',
-        'str' => 'font-weight:bold; color:#56DB3A',
         'note' => 'color:#1299DA',
-        'ref' => 'color:#A0A0A0',
-        'public' => 'color:#FFFFFF',
-        'protected' => 'color:#FFFFFF',
-        'private' => 'color:#FFFFFF',
-        'meta' => 'color:#B729D9',
-        'key' => 'color:#56DB3A',
-        'index' => 'color:#1299DA',
-        'ellipsis' => 'color:#FF8400',
+        'string' => 'color:#56DB3A',
+        'integer' => 'color:#1299DA',
+        'float' => 'color:#1299DA',
+        'double' => 'color:#1299DA',
+        'boolean' => 'color:#FF8400',
     );
-    protected $tos = [
-        'string'=>'key',
-        'integer'=>'index',
-        'float'=>'index',
-        'boolean'=>'ellipsis'
-    ];
     public function __construct($data)
     {
 
@@ -80,25 +68,11 @@ class Debug
                     if (!is_array($v)) {
 
                         $typek      = gettype($k);
-                        $color_type = null;
-                        if (array_key_exists($typek, $this->tos)) {
+                        $color_type = $this->styles[$typek];
 
-                            $color_type = $this->tos[$typek];
-                            $color_type = $this->styles[$color_type];
-
-                        }
-
-
-                        /**
-                         * Value icin type belirleme
-                         */
+                        //Value icin type
                         $type      = gettype($v);
-                        $color_val = null;
-
-                        if (array_key_exists($type, $this->tos)) {
-                            $color_val = $this->tos[$type];
-                            $color_val = $this->styles[$color_val];
-                        }
+                        $color_val = $this->styles[$type];
                         //Key
                         $output .= $tab . "<span style='$color_type'>" . ($typek === 'string' ? '"' . $k . '"' : ($typek === 'boolean' ? ($k === true ? 'true' : 'false') : $k)) . "</span> => ";
                         //val
@@ -107,13 +81,9 @@ class Debug
                         $output .= $eof;
                     } else {
                         $typek      = gettype($k);
-                        $color_type = null;
-                        if (array_key_exists($typek, $this->tos)) {
+                        $color_type = $this->styles[$typek];
 
-                            $color_type = $this->tos[$typek];
-                            $color_type = $this->styles[$color_type];
-                        }
-
+                        
                         $output .= $tab . "<span style='$color_type'>" . ($typek === 'string' ? '"' . $k . '"' : ($typek === 'boolean' ? ($k === true ? 'true' : 'false') : $k)) . "</span> => ";
                         $output .= $this->_output($v, (int)$start+1);
 

@@ -2,7 +2,7 @@
 namespace App\Controllers\Frontend;
 
 use System\Kernel\Controller;
-use System\Libs\Debug\Debug;
+
 
 
 class Home extends Controller
@@ -17,7 +17,7 @@ class Home extends Controller
             'a boolean' => true,
             'an empty array' => array(true,'sa'=>2),
         );
-        $de = new Debug($var);
+        debug($var);
     }
 
 }
