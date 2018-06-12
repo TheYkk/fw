@@ -25,7 +25,6 @@ class CDN
      */
     public function __call($name, $arguments)
     {
-        // TODO: Implement __call() method.
         return config('cdn.'.$name)[$arguments[0]];
     }
 

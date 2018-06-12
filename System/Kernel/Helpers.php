@@ -12,6 +12,24 @@
  *************************************************/
 
 /**
+ * Zn debug
+ */
+
+
+
+
+/**
+ * Bosluk helper
+ */
+if (!function_exists('br')) {
+    function br($hr=false){
+
+        echo '<br>';
+        if ($hr)  echo '<hr>';
+    }
+}
+
+/**
  * Debug Helper
  */
 if (!function_exists('dd')) {
