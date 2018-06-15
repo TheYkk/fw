@@ -83,7 +83,7 @@ class Debug
                         $typek      = gettype($k);
                         $color_type = $this->styles[$typek];
 
-                        
+
                         $output .= $tab . "<span style='$color_type'>" . ($typek === 'string' ? '"' . $k . '"' : ($typek === 'boolean' ? ($k === true ? 'true' : 'false') : $k)) . "</span> => ";
                         $output .= $this->_output($v, (int)$start+1);
 
