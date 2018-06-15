@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# Created by .ignore support plugin (hsz.mobi)
-### Composer template
-=======
->>>>>>> c24373cf9f644efc503ad9f565a3ccea7bcb94dc
+
 composer.phar
 /vendor/
 
