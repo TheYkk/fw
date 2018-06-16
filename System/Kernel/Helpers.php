@@ -289,18 +289,38 @@ if (!function_exists('public_path')) {
  * @param string $url
  * @return string
  */
+
 if (!function_exists('base_url')) {
     function base_url($url = null)
     {
-        if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
-            $protocol = 'https';
-        else
-            $protocol = 'http';
 
+        $base_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') ? 'https://' : 'http://';
+
+        $tmpURL = dirname(__FILE__);
+
+        $tmpURL = str_replace(chr(92), '/', $tmpURL);
+        $tmpURL = str_replace($_SERVER['DOCUMENT_ROOT'], '', $tmpURL);
+
+        $tmpURL = ltrim($tmpURL, '/');
+
+        $tmpURL = rtrim($tmpURL, '/');
+
+        if (strpos($tmpURL, '/')) {
+            $tmpURL = explode('/', $tmpURL);
+
+            $tmpURL = $tmpURL[0];
+
+        }
+
+        if ($tmpURL !== $_SERVER['HTTP_HOST']) {
+            $base_url .= $_SERVER['HTTP_HOST'] . '/' . $tmpURL . '/';
+        } else {
+            $base_url .= $tmpURL . '/';
+        }
         if (is_null($url))
-            return $protocol . "://" . $_SERVER['HTTP_HOST'];
+            return $base_url;
         else
-            return $protocol . "://" . rtrim($_SERVER['HTTP_HOST'], '/') . '/' . $url;
+            return $base_url. $url;
     }
 }
 
@@ -390,18 +410,6 @@ if (!function_exists('route')) {
     }
 }
 
-/**
- * Create a new piped item from a given value.
- *
- * @param mixed $value
- * @return System\Libs\Tools\Item
- */
-if (!function_exists('take')) {
-    function take($value)
-    {
-        return new System\Libs\Tools\Item($value);
-    }
-}
 
 /**
  * URL Slug Generator

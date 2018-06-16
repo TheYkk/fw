@@ -43,7 +43,7 @@ return [
             'Benchmark'			=> System\Libs\Benchmark\Benchmark::class,
             'Image'				=> System\Libs\Image\Image::class,
             'Hash'				=> System\Libs\Hashing\Hash::class,
-            'Jwt'				=> System\Libs\Tools\Jwt::class,
+            'Jwt'				=> System\Libs\Http\Jwt::class,
          */
 	],
 
