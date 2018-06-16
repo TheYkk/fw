@@ -1,11 +1,10 @@
 <?php
 /**
- * PDOx - Useful Query Builder & PDO Class
+ * PDO Help
  *
- * @class    Pdox
- * @author   izni burak demirtaş (@izniburak) <info@burakdemirtas.org>
- * @web      <http://burakdemirtas.org>
- * @url      <https://github.com/izniburak/PDOx>
+ * @class    Pdo Help
+ * @developers   izni burak demirtaş (@izniburak) <info@burakdemirtas.org> , ismail0234/pdodatabase/
+ * @url      <https://github.com/izniburak/PDOx> ,<https://github.com/ismail0234/pdodatabase>
  * @license  The MIT License (MIT) - <http://opensource.org/licenses/MIT>
  */
 
@@ -45,6 +44,12 @@ class DB
     protected $transactionCount = 0;
     // DB config items
     protected $config;
+
+    //From ismail
+    protected $debugcss = '<style type="text/css">body{margin:40px;font:13px/20px normal Helvetica,Arial,sans-serif;color:#4F5155}h1{border-bottom:1px solid #D0D0D0;font-size:19px;font-weight:400;margin:0 0 14px;padding:14px 15px 10px}#container{margin:10px;border:1px solid #D0D0D0;box-shadow:0 0 8px #D0D0D0}p{margin:12px 15px}</style>';
+
+
+
     public function __construct()
     {
         $this->config = config('database');
@@ -82,6 +87,7 @@ class DB
 
         return $this->pdo;
     }
+
 
     public function table($table)
     {
@@ -485,12 +491,12 @@ class DB
 
     public function error()
     {
-        $msg = '<h1>Database Error</h1>';
-        $msg .= '<h4>Query: <em style="font-weight:normal;">"'.$this->query.'"</em></h4>';
-        $msg .= '<h4>Error: <em style="font-weight:normal;">'.$this->error.'</em></h4>';
-
+        $msg  =  '<div id="container"><h1>Database Error</h1>';
+        $msg .=  '<p> Query: '.$this->query.'</p>';
+        $msg .=  '<p> Error: '.$this->error.'</p>';
+        $msg .=  '</div>';
         if($this->debug === true)
-            die($msg);
+            die($this->debugcss.$msg);
         else
             throw new PDOException($this->error . ". ("  . $this->query . ")");
     }

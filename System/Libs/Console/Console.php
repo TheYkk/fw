@@ -1,12 +1,12 @@
 <?php
 /*************************************************
- * Titan-2 Mini Framework
+ * TheYkk's fw
  * Routing Library
  *
- * Author 	: Turan Karatuğ
- * Web 		: http://www.titanphp.com
- * Docs 	: http://kilavuz.titanphp.com
- * Github	: http://github.com/tkaratug/titan2
+ * Author 	: Yusuf Kaan Karakaya
+ * Web 		: http://theykk.net
+  *
+ * Github	: http://github.com/theykk/fw
  * License	: MIT
  *
  *************************************************/
@@ -98,7 +98,7 @@ class Console
      */
     private function help()
     {
-        return $this->getColoredString('// ========== [+] Titan Web Framework Console Komutlari ========== //', 'red') . "\n\n" .
+        return $this->getColoredString('// ========== [+] TheYkk fw Web Framework Console Komutlari ========== //', 'red') . "\n\n" .
                $this->getColoredString('- Make', 'yellow') . "\n" .
                $this->getColoredString('[make:controller]', 'light_blue') . "\t" . $this->getColoredString('Controller olusturmak icin kullanilir. (Orn: make:controller MyController).') . "\n" .
                $this->getColoredString('[make:model]', 'light_blue') . "\t\t" . $this->getColoredString('Model olusturmak icin kullanilir. (Orn: make:model MyModel).') . "\n" .
@@ -110,9 +110,9 @@ class Console
                $this->getColoredString('[clear:cache]', 'light_blue') . "\t\t" . $this->getColoredString('/App/Storage/Cache dizinini temizlemek icin kullanilir.') . "\n" .
                $this->getColoredString('[clear:logs]', 'light_blue') . "\t\t" . $this->getColoredString('/App/Storage/Logs dizinini temizlemek icin kullanilir.') . "\n" .
 
-               $this->getColoredString('[-v]', 'light_blue') . "\t\t\t" . $this->getColoredString('Titan Web Framework versiyon bilgisini verir.') . "\n" .
+               $this->getColoredString('[-v]', 'light_blue') . "\t\t\t" . $this->getColoredString('TheYkk Web Framework versiyon bilgisini verir.') . "\n" .
                $this->getColoredString('[-h]', 'light_blue') . "\t\t\t" . $this->getColoredString('Tum console komutlari ile ilgili bilgi verir.') . "\n\n" .
-               $this->getColoredString('// ========== [-] Titan Web Framework Console Komutlari ========== //', 'red');
+               $this->getColoredString('// ========== [-] TheYkk Web Framework Console Komutlari ========== //', 'red');
     }
 
     /**
@@ -122,7 +122,7 @@ class Console
      */
     private function version()
     {
-        return $this->getColoredString('Titan Web Framework: ', 'light_red') . "\t" . $this->getColoredString('v' . VERSION, 'light_blue');
+        return $this->getColoredString('TheYkk Web Framework: ', 'light_red') . "\t" . $this->getColoredString('v' . VERSION, 'light_blue');
     }
 
     /**

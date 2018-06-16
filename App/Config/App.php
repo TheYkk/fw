@@ -1,13 +1,13 @@
 <?php
 /*************************************************
- * Titan-2 Mini Framework
+ * TheYkk's fw
  * System Configurations
  *
- * Author 	: Turan Karatuğ
- * Web 		: http://www.titanphp.com
- * Docs 	: http://kilavuz.titanphp.com 
- * Github	: http://github.com/tkaratug/titan2
- * License	: MIT	
+ * Author 	: Yusuf Kaan Karakaya
+ * Web 		: http://theykk.net
+  *
+ * Github	: http://github.com/theykk/fw
+ * License	: MIT
  *
  *************************************************/
 return [
@@ -62,5 +62,7 @@ return [
 		'userpass'					=> '',
 		'charset'					=> 'utf-8',
 	],
-
+    'jwt'          => [
+        'key'                       => 'A58qILk4IK9ZHi4xyAM7NHJU'
+    ]
 ];

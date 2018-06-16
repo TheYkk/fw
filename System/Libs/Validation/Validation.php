@@ -1,12 +1,12 @@
 <?php
 /*************************************************
- * Titan-2 Mini Framework
+ * TheYkk's fw
  * Form Validation Library
  *
- * Author   : Turan Karatuğ
- * Web      : http://www.titanphp.com
- * Docs     : http://kilavuz.titanphp.com
- * Github   : http://github.com/tkaratug/titan2
+ * Author   : Yusuf Kaan Karakaya
+ * Web      : http://theykk.net
+ *
+ * Github   : http://github.com/theykk/fw
  * License  : MIT
  *
  *************************************************/
@@ -38,7 +38,7 @@ class Validation
 		foreach ($rules as $key => $value) {
 			$this->labels[$key] = $value['label'];
             $this->rules[$key]	= $value['rules'];
-            
+
             if (!empty($params))
                 $this->data[$key] = $params[$key];
 		}
@@ -156,7 +156,7 @@ class Validation
                             if ($this->$rule($this->data[$key]) === false)
                                 $this->errors[$key] = lang('validation', $rule . '_error', $this->labels[$key]);
                         }
-                        
+
                     }
 				}
 			}

@@ -1,13 +1,13 @@
 <?php
 /*************************************************
- * Titan-2 Mini Framework
+ * TheYkk's fw
  * Curl Library
  *
- * Author   : Turan Karatuğ
- * Web      : http://www.titanphp.com
- * Docs     : http://kilavuz.titanphp.com 
- * Github   : http://github.com/tkaratug/titan2
- * License  : MIT   
+ * Author   : Yusuf Kaan Karakaya
+ * Web      : http://theykk.net
+ *
+ * Github   : http://github.com/theykk/fw
+ * License  : MIT
  *
  *************************************************/
 namespace System\Libs\Http;
@@ -53,7 +53,7 @@ class Curl
             $this->cookieFile  = APP_DIR . 'Storage/curl_cookie.txt';
 
         if ($this->userAgent === '')
-            $this->userAgent   = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : 'TitanMVC/PHP '.PHP_VERSION.' (http://github.com/tkaratug/titan2)';
+            $this->userAgent   = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : 'TheYkk/fw '.PHP_VERSION.' (http://github.com/theykk/fw)';
 	}
 
 	/**
@@ -136,7 +136,7 @@ class Curl
                 return null;
             }
         }
-        
+
     }
 
     /**
@@ -184,7 +184,7 @@ class Curl
         else
             $this->headers[$header] = $value;
 
-        return $this->headers;        
+        return $this->headers;
     }
 
     /**
@@ -216,25 +216,25 @@ class Curl
         $this->error 	= '';
         $this->ch 		= curl_init();
         if (is_array($params)) $params = http_build_query($params, '', '&');
-        
+
         $this->set_request_method($method);
         $this->set_request_options($url, $params);
         $this->set_request_headers();
-        
+
         $response = curl_exec($this->ch);
-        
+
         if ($response) {
             $response = $this->getResponse($response);
         } else {
             $this->error = curl_errno($this->ch).' - '.curl_error($this->ch);
         }
-        
+
         curl_close($this->ch);
     }
 
     /**
      * Set Request Headers
-     * 
+     *
      * @return void
      */
     private function set_request_headers()
@@ -279,7 +279,7 @@ class Curl
     {
         curl_setopt($this->ch, CURLOPT_URL, $url);
         if (!empty($params)) curl_setopt($this->ch, CURLOPT_POSTFIELDS, $params);
-        
+
         # Set some default CURL options
         curl_setopt($this->ch, CURLOPT_HEADER, true);
         curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
@@ -290,7 +290,7 @@ class Curl
         }
         if ($this->followRedirects) curl_setopt($this->ch, CURLOPT_FOLLOWLOCATION, true);
         if ($this->referrer !== null) curl_setopt($this->ch, CURLOPT_REFERER, $this->referrer);
-        
+
         # Set any custom CURL options
         foreach ($this->options as $option => $value) {
             curl_setopt($this->ch, constant('CURLOPT_'.str_replace('CURLOPT_', '', strtoupper($option))), $value);

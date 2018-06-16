@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Titan 2</title>
+	<title>TheYkk</title>
 	<style type="text/css">
 		@import url('https://fonts.googleapis.com/css?family=Nunito:300,400,600');
 		body {
@@ -78,14 +78,14 @@
 <body>
 
 	<div id="logo">
-		<img src="{{ PUBLIC_DIR }}img/titan.png" width="150" />
+		<img src="{{ PUBLIC_DIR }}img/default.png" width="150" />
 	</div>
 	<div id="container">
-		<h3>TITAN<span>2</span> - MVC FRAMEWORK</h3>
+		<h3>THEYKK<span>fw</span> - MVC FRAMEWORK</h3>
 
 	</div>
 	<div id="footer">
-		<span class="copyright">Developed by <a href="http://www.turankaratug.com" target="_blank">Turan Karatuğ</a></span>
+		<span class="copyright">Developed by <a href="http://theykk.net" target="_blank">Yusuf Kaan Karakaya</a></span>
 		<span class="version">Version {{ VERSION }}</span>
 	</div>
 

@@ -1,13 +1,13 @@
 <?php
 /*************************************************
- * Titan-2 Mini Framework
+ * TheYkk's fw
  * Simple and Modern Web Application Framework
  *
- * Author 	: Turan Karatuğ
- * Web 		: http://www.titanphp.com
- * Docs 	: http://kilavuz.titanphp.com
+ * Author 	: Yusuf Kaan Karakaya
+ * Web 		: http://theykk.net
+  *
  * Version 	: 2.2.0
- * Github	: http://github.com/tkaratug/titan2
+ * Github	: http://github.com/theykk/fw
  * License	: MIT
  *
  *************************************************/

@@ -17,7 +17,7 @@ class Jwt
 
     /**
      * Create JWT
-     * 
+     *
      * @param array $payload
      * @param string $secret
      * @param string $alg
@@ -41,7 +41,7 @@ class Jwt
         $header         = $this->urlSafeBase64Encode($this->jsonEncode($header));
         $payload        = $this->urlSafeBase64Encode($this->jsonEncode($payload));
         $message        = $header . '.' . $payload;
-
+        $secret = config('app.jwt.key')??$secret;
         $signature      = $this->urlSafeBase64Encode($this->signature($message, $secret, $alg));
 
         return $header . '.' . $payload . '.' . $signature;
@@ -49,7 +49,7 @@ class Jwt
 
     /**
      * Decode JWT
-     * 
+     *
      * @param string $token
      * @param string $secret
      * @return object
@@ -98,7 +98,7 @@ class Jwt
 
     /**
      * Make Signature
-     * 
+     *
      * @param string $message
      * @param string $secret
      * @param string $alg
@@ -114,7 +114,7 @@ class Jwt
 
     /**
      * Verify a signature with message and secret key
-     * 
+     *
      * @param string $message
      * @param string $signature
      * @param string $secret
@@ -146,7 +146,7 @@ class Jwt
 
     /**
      * URL Safe Base64 Encode
-     * 
+     *
      * @param string $data
      * @return string
      */
@@ -157,7 +157,7 @@ class Jwt
 
     /**
      * URL Safe Base64 Decode
-     * 
+     *
      * @param string $data
      * @return string
      */
@@ -170,17 +170,17 @@ class Jwt
         }
         return base64_decode(strtr($data, '-_', '+/'));
     }
-    
+
     /**
      * Encode a PHP object|array into a JSON string
-     * 
+     *
      * @param object|array $data
      * @return string
      */
     private function jsonEncode($data)
     {
         $json = json_encode($data);
-        
+
         if (function_exists('json_last_error') && $errno = json_last_error()) {
             $this->handleJsonError($errno);
         } elseif ($json === 'null' && $data !== null) {
@@ -192,7 +192,7 @@ class Jwt
 
     /**
      * Decode a JSON string to a PHP object
-     * 
+     *
      * @param string $data
      * @return object
      */
@@ -217,7 +217,7 @@ class Jwt
 
     /**
      * Helper to create a json error
-     * 
+     *
      * @param int $errno
      * @return void
      */
@@ -240,7 +240,7 @@ class Jwt
 
     /**
      * Get the number of bytes in cryptographic strings.
-     * 
+     *
      * @param string $str
      * @return int
      */

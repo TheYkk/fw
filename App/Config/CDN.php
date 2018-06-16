@@ -4,16 +4,16 @@
          * Scripts
         */
 
-        'scripts' =>
+        'script' =>
             [
-                'jquery'                     => 'https://code.jquery.com/jquery-latest.js',
-                'jqueryUi'                   => 'https://code.jquery.com/ui/1.11.3/jquery-ui.js',
+                'jquery'                     => 'https://code.jquery.com/jquery-3.3.1.min.js',
+                'jqueryUi'                   => 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js',
                 'jqueryValidator'            => 'https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js',
-                'bootstrap'                  => 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',
-                'bootlint'                   => 'https://maxcdn.bootstrapcdn.com/bootlint/0.14.1/bootlint.min.js',
-                'angular'                    => 'https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js',
-                'react'                      => 'https://cdnjs.cloudflare.com/ajax/libs/react/15.5.4/react.min.js',
-                'vue'                        => 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.min.js',
+                'bootstrap'                  => 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js',
+                'bootlint'                   => 'https://cdn.jsdelivr.net/npm/bootlint@0.14.2/src/bootlint.min.js',
+                'angular'                    => 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-animate.min.js',
+                'react'                      => 'https://cdnjs.cloudflare.com/ajax/libs/react/16.4.0/cjs/react.production.min.js',
+                'vue'                        => 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js',
                 'datatables'                 => 'https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js',
                 'autoFillDatatables'         => 'https://cdn.datatables.net/autofill/2.2.0/js/dataTables.autoFill.min.js',
                 'buttonsDatatables'          => 'https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js',
@@ -44,10 +44,10 @@
          * Style
         */
 
-        'styles' =>
+        'style' =>
             [
-                'bootstrap'               => 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
-                'awesome'                 => 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css',
+                'bootstrap'               => 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css',
+                'awesome'                 => 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
                 'datatables'              => 'https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css',
                 'autoFillDatatables'      => 'https://cdn.datatables.net/autofill/2.2.0/css/autoFill.dataTables.min.css',
                 'buttonsDatatables'       => 'https://cdn.datatables.net/buttons/1.3.1/css/buttons.dataTables.min.css',
@@ -62,7 +62,7 @@
                 'selectDatatables'        => 'https://cdn.datatables.net/select/1.2.2/css/select.dataTables.min.css',
                 'morris'                  => 'https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css',
                 'datepicker'              => 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css',
-                'select2'                 => 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css',
+                'select2'                 => 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css',
                 'flexSlider'              => 'https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.6.3/flexslider.css',
                 'sweetAlert'              => 'https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css',
                 'dropzone'                => 'https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.2.0/min/dropzone.min.css'
@@ -72,11 +72,13 @@
          * Fonts
         */
 
-        'fonts' => [],
+        'font' => [
+            'key' =>'sa'
+        ],
 
         /**
          * Files
          */
 
-        'files' => []
+        'file' => []
     ];

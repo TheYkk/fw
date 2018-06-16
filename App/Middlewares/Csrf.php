@@ -8,9 +8,9 @@ class Csrf
 {
     public function handle()
     {
-        if (Session::has('titan_token')) {
-            if (request('csrf_token') == Session::get('titan_token')) {
-                Session::delete('titan_token');
+        if (Session::has('ykk_token')) {
+            if (request('csrf_token') == Session::get('ykk_token')) {
+                Session::delete('ykk_token');
                 return true;
             } else {
                 throw new ExceptionHandler("Hata", "CSRF Token does not match");

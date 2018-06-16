@@ -1,10 +1,9 @@
 <?php
 /*************************************************
- * Titan Router
  * PHP Routing Library
  *
- * Author   : Turan Karatuğ
- * Github   : http://github.com/tkaratug/titan-router
+ * Author   : Yusuf Kaan Karakaya
+ * Github   : http://github.com/theykk/fw
  * License  : MIT
  *
  *************************************************/

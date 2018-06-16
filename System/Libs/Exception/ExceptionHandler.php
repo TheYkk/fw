@@ -1,13 +1,13 @@
 <?php
 /*************************************************
- * Titan-2 Mini Framework
+ * TheYkk's fw
  * Exception Handler Library
  *
- * Author 	: Turan Karatuğ
- * Web 		: http://www.titanphp.com
- * Docs 	: http://kilavuz.titanphp.com 
- * Github	: http://github.com/tkaratug/titan2
- * License	: MIT	
+ * Author 	: Yusuf Kaan Karakaya
+ * Web 		: http://theykk.net
+  *
+ * Github	: http://github.com/theykk/fw
+ * License	: MIT
  *
  *************************************************/
 namespace System\Libs\Exception;
@@ -18,6 +18,6 @@ class ExceptionHandler
 {
 	public function __construct($title, $body)
 	{
-		throw new Exception(strip_tags($title . ': ' . $body), 1);		
+		throw new Exception(strip_tags($title . ': ' . $body), 1);
 	}
 }
