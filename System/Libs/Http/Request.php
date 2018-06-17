@@ -5,7 +5,7 @@
  *
  * Author 	: Yusuf Kaan Karakaya
  * Web 		: http://theykk.net
-  *
+ *
  * Github	: http://github.com/theykk/fw
  * License	: MIT
  *
@@ -14,512 +14,512 @@ namespace System\Libs\Http;
 
 class Request
 {
-	// 'Get' Variables
-	protected $getVars;
+    // 'Get' Variables
+    protected $getVars;
 
-	// 'Post' Variables
-	protected $postVars;
+    // 'Post' Variables
+    protected $postVars;
 
-	// 'Cookie' Variables
-	protected $cookieVars;
+    // 'Cookie' Variables
+    protected $cookieVars;
 
-	// 'File' Variables
-	protected $filesVars;
+    // 'File' Variables
+    protected $filesVars;
 
-	// 'Server' Variables
-	protected $serverVars;
+    // 'Server' Variables
+    protected $serverVars;
 
-	// 'Global' Variables
-	protected $globalVars;
+    // 'Global' Variables
+    protected $globalVars;
 
-	public function __construct()
-	{
-		$this->createGlobals();
-	}
+    public function __construct()
+    {
+        $this->createGlobals();
+    }
 
-	// Create Global Variables
-	private function createGlobals()
-	{
-		foreach ($GLOBALS as $key => $value) {
-			switch ($key) {
-				case '_GET':
-					$this->getVars = $value;
-					break;
-				case '_POST':
-					$this->postVars = $value;
-					break;
-				case '_COOKIE' :
-					$this->cookieVars = $value;
-					break;
-				case '_FILES' :
-					$this->filesVars = $value;
-					break;
-				case '_SERVER' :
-					$this->serverVars = $value;
-					break;
-				case 'GLOBALS' :
-					$this->globalVars = $value;
-					break;
-			}
-		}
-	}
+    // Create Global Variables
+    private function createGlobals()
+    {
+        foreach ($GLOBALS as $key => $value) {
+            switch ($key) {
+                case '_GET':
+                    $this->getVars = $value;
+                    break;
+                case '_POST':
+                    $this->postVars = $value;
+                    break;
+                case '_COOKIE' :
+                    $this->cookieVars = $value;
+                    break;
+                case '_FILES' :
+                    $this->filesVars = $value;
+                    break;
+                case '_SERVER' :
+                    $this->serverVars = $value;
+                    break;
+                case 'GLOBALS' :
+                    $this->globalVars = $value;
+                    break;
+            }
+        }
+    }
 
-	/**
-	 * Get Server Variables
-	 *
-	 * @param string $param
-	 * @return string|array
-	 */
-	public function server($param = null)
-	{
-		if (is_null($param))
-			return $this->serverVars;
-		else
-			return $this->serverVars[$param] ?? null;
-	}
+    /**
+     * Get Server Variables
+     *
+     * @param string $param
+     * @return string|array
+     */
+    public function server($param = null)
+    {
+        if (is_null($param))
+            return $this->serverVars;
+        else
+            return $this->serverVars[$param] ?? null;
+    }
 
-	/**
-	 * Get HTTP Headers
-	 *
-	 * @param string
-	 * @return string|array
-	 */
-	public function headers($param = null)
-	{
-		$headers = getallheaders();
+    /**
+     * Get HTTP Headers
+     *
+     * @param string
+     * @return string|array
+     */
+    public function headers($param = null)
+    {
+        $headers = getallheaders();
 
-		if (is_null($param))
-			return getallheaders();
-		else {
-			$headerResponse = [];
-			foreach ($headers as $key => $val) {
-				$headerResponse[$key] = $val;
-			}
-			return $headerResponse[ucwords($param)];
-		}
-	}
+        if (is_null($param))
+            return getallheaders();
+        else {
+            $headerResponse = [];
+            foreach ($headers as $key => $val) {
+                $headerResponse[$key] = $val;
+            }
+            return $headerResponse[ucwords($param)];
+        }
+    }
 
-	/**
-	 * Get All Inputs
-	 *
-	 * @param boolean $filter
-	 * @return array
-	 */
-	public function all($filter = true)
-	{
-		return $this->filter($_REQUEST, $filter);
-	}
+    /**
+     * Get All Inputs
+     *
+     * @param boolean $filter
+     * @return array
+     */
+    public function all($filter = true)
+    {
+        return $this->filter($_REQUEST, $filter);
+    }
 
-	/**
-	 * Get Variables
-	 *
-	 * @param string $param
-	 * @return string|array
-	 */
-	public function get($param = null, $filter = true)
-	{
-		if (is_null($param))
-			return $this->getVars;
-		else
-			return $this->filter($this->getVars[$param], $filter);
-	}
+    /**
+     * Get Variables
+     *
+     * @param string $param
+     * @return string|array
+     */
+    public function get($param = null, $filter = true)
+    {
+        if (is_null($param))
+            return $this->getVars;
+        else
+            return $this->filter($this->getVars[$param], $filter);
+    }
 
-	/**
-	 * Post Variables
-	 *
-	 * @param string $param
-	 * @return string|array
-	 */
-	public function post($param = null, $filter = true)
-	{
-		if (is_null($param))
-			return $this->postVars;
-		else
-			return $this->filter($this->postVars[$param], $filter);
-	}
+    /**
+     * Post Variables
+     *
+     * @param string $param
+     * @return string|array
+     */
+    public function post($param = null, $filter = true)
+    {
+        if (is_null($param))
+            return $this->postVars;
+        else
+            return $this->filter($this->postVars[$param], $filter);
+    }
 
-	/**
-	 * Put Variables
-	 *
-	 * @param string $param
-	 * @param boolean $filter
-	 */
-	public function put($param = null, $filter = true)
-	{
-		parse_str(file_get_contents("php://input"), $_PUT);
+    /**
+     * Put Variables
+     *
+     * @param string $param
+     * @param boolean $filter
+     */
+    public function put($param = null, $filter = true)
+    {
+        parse_str(file_get_contents("php://input"), $_PUT);
 
-		if ($param == null)
-			return $_PUT;
-		else
-			return $this->filter($_PUT[$param], $filter);
-	}
+        if ($param == null)
+            return $_PUT;
+        else
+            return $this->filter($_PUT[$param], $filter);
+    }
 
-	/**
-	 * Patch Variables
-	 *
-	 * @param string $param
-	 * @param boolean $filter
-	 * @return string|array
-	 */
-	public function patch($param = null, $filter = true)
-	{
-		parse_str(file_get_contents('php://input'), $_PATCH);
+    /**
+     * Patch Variables
+     *
+     * @param string $param
+     * @param boolean $filter
+     * @return string|array
+     */
+    public function patch($param = null, $filter = true)
+    {
+        parse_str(file_get_contents('php://input'), $_PATCH);
 
-		if ($param == null)
-			return $_PATCH;
-		else
-			return $this->filter($_PATCH[$param], $filter);
-	}
+        if ($param == null)
+            return $_PATCH;
+        else
+            return $this->filter($_PATCH[$param], $filter);
+    }
 
-	/**
-	 * Delete Variables
-	 *
-	 * @param string $param
-	 * @param boolean $filter
-	 */
-	public function delete($param = null, $filter = true)
-	{
-		parse_str(file_get_contents("php://input"), $_DELETE);
+    /**
+     * Delete Variables
+     *
+     * @param string $param
+     * @param boolean $filter
+     */
+    public function delete($param = null, $filter = true)
+    {
+        parse_str(file_get_contents("php://input"), $_DELETE);
 
-		if ($param == null)
-			return $_DELETE;
-		else
-			return $this->filter($_DELETE[$param], $filter);
-	}
+        if ($param == null)
+            return $_DELETE;
+        else
+            return $this->filter($_DELETE[$param], $filter);
+    }
 
-	/**
-	 * Get Cookie Variables
-	 *
-	 * @param string $param
-	 * @return string|array
-	 */
-	public function cookie($param = null)
-	{
-		if (is_null($param))
-			return $this->cookieVars;
-		else
-			return $this->cookieVars[$param];
-	}
+    /**
+     * Get Cookie Variables
+     *
+     * @param string $param
+     * @return string|array
+     */
+    public function cookie($param = null)
+    {
+        if (is_null($param))
+            return $this->cookieVars;
+        else
+            return $this->cookieVars[$param];
+    }
 
-	/**
-	 * Get File Variables
-	 *
-	 * @param string $param
-	 * @return string|array
-	 */
-	public function files($param = null)
-	{
-		if (is_null($param))
-			return $this->filesVars;
-		else
-			return $this->filesVars[$param];
-	}
+    /**
+     * Get File Variables
+     *
+     * @param string $param
+     * @return string|array
+     */
+    public function files($param = null)
+    {
+        if (is_null($param))
+            return $this->filesVars;
+        else
+            return $this->filesVars[$param];
+    }
 
-	/**
-	 * Get Globals
-	 *
-	 * @param string $param
-	 * @return string|array
-	 */
-	public function globals($param = null)
-	{
-		if (is_null($param))
-			return $this->globalVars;
-		else
-			return $this->globalVars[$param];
-	}
+    /**
+     * Get Globals
+     *
+     * @param string $param
+     * @return string|array
+     */
+    public function globals($param = null)
+    {
+        if (is_null($param))
+            return $this->globalVars;
+        else
+            return $this->globalVars[$param];
+    }
 
-	/**
-	 * Get Request Method
-	 *
-	 * @return string
-	 */
-	public function getRequestMethod()
-	{
-		return $this->server('REQUEST_METHOD');
-	}
+    /**
+     * Get Request Method
+     *
+     * @return string
+     */
+    public function getRequestMethod()
+    {
+        return $this->server('REQUEST_METHOD');
+    }
 
-	/**
-	 * Get Script Name
-	 *
-	 * @return string
-	 */
-	public function getScriptName()
-	{
-		return $this->server('SCRIPT_NAME');
-	}
+    /**
+     * Get Script Name
+     *
+     * @return string
+     */
+    public function getScriptName()
+    {
+        return $this->server('SCRIPT_NAME');
+    }
 
-	/**
-	 * Get Request Scheme
-	 *
-	 * @return string
-	 */
-	public function getScheme()
-	{
-		return stripos($this->server('SERVER_PROTOCOL'), 'https') === true ? 'https' : 'http';
-	}
+    /**
+     * Get Request Scheme
+     *
+     * @return string
+     */
+    public function getScheme()
+    {
+        return stripos($this->server('SERVER_PROTOCOL'), 'https') === true ? 'https' : 'http';
+    }
 
-	/**
-	 * Get Http Host
-	 *
-	 * @return string
-	 */
-	public function getHost()
-	{
-		return $this->server('HTTP_HOST');
-	}
+    /**
+     * Get Http Host
+     *
+     * @return string
+     */
+    public function getHost()
+    {
+        return $this->server('HTTP_HOST');
+    }
 
-	/**
-	 * Get Request URI
-	 *
-	 * @return string
-	 */
-	public function getRequestUri()
-	{
-		return $this->server('REQUEST_URI');
-	}
+    /**
+     * Get Request URI
+     *
+     * @return string
+     */
+    public function getRequestUri()
+    {
+        return $this->server('REQUEST_URI');
+    }
 
-	/**
-	 * Get Base URL
-	 *
-	 * @param string $url
-	 * @return string
-	 */
-	public function baseUrl($url = null)
-	{
- 		if (is_null($url))
-	    	return $this->getScheme() . '://' . $this->getHost();
-		else
-			return $this->getScheme() . '://' . rtrim($this->getHost(), '/') . '/' . $url;
-	}
+    /**
+     * Get Base URL
+     *
+     * @param string $url
+     * @return string
+     */
+    public function baseUrl($url = null)
+    {
+        if (is_null($url))
+            return $this->getScheme() . '://' . $this->getHost();
+        else
+            return $this->getScheme() . '://' . rtrim($this->getHost(), '/') . '/' . $url;
+    }
 
-	/**
-	 * Get URL Segments
-	 *
-	 * @return array
-	 */
-	public function segments()
-	{
-		return explode('/', trim(parse_url($this->getRequestUri(), PHP_URL_PATH), '/'));
-	}
+    /**
+     * Get URL Segments
+     *
+     * @return array
+     */
+    public function segments()
+    {
+        return explode('/', trim(parse_url($this->getRequestUri(), PHP_URL_PATH), '/'));
+    }
 
-	/**
-	 * Get specified segment from URL
-	 *
-	 * @param int $index
-	 * @return string
-	 */
-	public function getSegment($index)
-	{
-		return $this->segments()[$index];
-	}
+    /**
+     * Get specified segment from URL
+     *
+     * @param int $index
+     * @return string
+     */
+    public function getSegment($index)
+    {
+        return $this->segments()[$index];
+    }
 
-	/**
-	 * Get current URL Segment
-	 *
-	 * @return string
-	 */
-	public function currentSegment()
-	{
-		$numSegment = count($this->segments());
-		return $this->getSegment($numSegment - 1);
-	}
+    /**
+     * Get current URL Segment
+     *
+     * @return string
+     */
+    public function currentSegment()
+    {
+        $numSegment = count($this->segments());
+        return $this->getSegment($numSegment - 1);
+    }
 
-	/**
-	 * Get Query String Elements
-	 *
-	 * @param boolean $array (If true then return as an array)
-	 * @return string|array
-	 */
-	public function getQueryString($array = false)
-	{
-		if ($array === false) {
-			return $this->server('QUERY_STRING');
-		} else {
-			$qsParts	= explode('&', $this->server('QUERY_STRING'));
-			$qsArray 	= [];
+    /**
+     * Get Query String Elements
+     *
+     * @param boolean $array (If true then return as an array)
+     * @return string|array
+     */
+    public function getQueryString($array = false)
+    {
+        if ($array === false) {
+            return $this->server('QUERY_STRING');
+        } else {
+            $qsParts	= explode('&', $this->server('QUERY_STRING'));
+            $qsArray 	= [];
 
-			foreach ($qsParts as $key => $value) {
-				$qsItems 				= explode('=', $value);
-				$qsArray[$qsItems[0]] 	= $qsItems[1];
-			}
+            foreach ($qsParts as $key => $value) {
+                $qsItems 				= explode('=', $value);
+                $qsArray[$qsItems[0]] 	= $qsItems[1];
+            }
 
-			return $qsArray;
-		}
-	}
+            return $qsArray;
+        }
+    }
 
-	/**
-	 * Get Content Type
-	 *
-	 * @return string
-	 */
-	public function getContentType()
-	{
-		return split(',', $this->headers()['Accept'])[0];
-	}
+    /**
+     * Get Content Type
+     *
+     * @return string
+     */
+    public function getContentType()
+    {
+        return split(',', $this->headers()['Accept'])[0];
+    }
 
-	/**
-	 * Get Locales
-	 *
-	 * @return array
-	 */
-	public function getLocales()
-	{
-		return explode(',', preg_replace('/(;q=[0-9\.]+)/i', '', strtolower(trim($this->server('HTTP_ACCEPT_LANGUAGE')))));
-	}
+    /**
+     * Get Locales
+     *
+     * @return array
+     */
+    public function getLocales()
+    {
+        return explode(',', preg_replace('/(;q=[0-9\.]+)/i', '', strtolower(trim($this->server('HTTP_ACCEPT_LANGUAGE')))));
+    }
 
-	/**
-	 * Get the locale
-	 *
-	 * @return string
-	 */
-	public function getLocale()
-	{
-		return $this->getLocales()[0];
-	}
+    /**
+     * Get the locale
+     *
+     * @return string
+     */
+    public function getLocale()
+    {
+        return substr($this->getLocales()[0],0,2);
+    }
 
-	/**
-	 * Check if the requested method is of specified type
-	 *
-	 * @return string
-	 */
-	public function isMethod($method)
-	{
-		return $this->getRequestMethod() === strtoupper($method);
-	}
+    /**
+     * Check if the requested method is of specified type
+     *
+     * @return string
+     */
+    public function isMethod($method)
+    {
+        return $this->getRequestMethod() === strtoupper($method);
+    }
 
 
-	/**
-	 * Check if the request is an ajax request
-	 *
-	 * @return bool
-	 */
-	public function isAjax()
-	{
-		if (null !== $this->server('HTTP_X_REQUESTED_WITH') && strtolower($this->server('HTTP_X_REQUESTED_WITH')) === 'xmlhttprequest')
-			return true;
-		else
-			return false;
-	}
+    /**
+     * Check if the request is an ajax request
+     *
+     * @return bool
+     */
+    public function isAjax()
+    {
+        if (null !== $this->server('HTTP_X_REQUESTED_WITH') && strtolower($this->server('HTTP_X_REQUESTED_WITH')) === 'xmlhttprequest')
+            return true;
+        else
+            return false;
+    }
 
-	/**
-	 * Check if the http request is secure
-	 *
-	 * @return bool
-	 */
-	public function isSecure()
-	{
-		if (null !== $this->server('HTTPS'))
+    /**
+     * Check if the http request is secure
+     *
+     * @return bool
+     */
+    public function isSecure()
+    {
+        if (null !== $this->server('HTTPS'))
             return true;
 
         if (null !== $this->server('HTTP_X_FORWARDED_PROTO') && $this->server('HTTP_X_FORWARDED_PROTO') == 'https')
             return true;
 
         return false;
-	}
+    }
 
-	/**
-	 * Check if the visitor is robot
-	 *
-	 * @return boolean
-	 */
-	public function isRobot()
-	{
-		if (null !== $this->server('HTTP_USER_AGENT') && preg_match('/bot|crawl|slurp|spider/i', $this->server('HTTP_USER_AGENT')))
-			return true;
-		else
-			return false;
-	}
+    /**
+     * Check if the visitor is robot
+     *
+     * @return boolean
+     */
+    public function isRobot()
+    {
+        if (null !== $this->server('HTTP_USER_AGENT') && preg_match('/bot|crawl|slurp|spider/i', $this->server('HTTP_USER_AGENT')))
+            return true;
+        else
+            return false;
+    }
 
-	/**
-	 * Check if the visitor is mobile
-	 *
-	 * @return boolean
-	 */
-	public function isMobile()
-	{
-		return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $this->server("HTTP_USER_AGENT"));
-	}
+    /**
+     * Check if the visitor is mobile
+     *
+     * @return boolean
+     */
+    public function isMobile()
+    {
+        return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $this->server("HTTP_USER_AGENT"));
+    }
 
-	/**
-	 * Check is referral
-	 *
-	 * @return boolean
-	 */
-	public function isReferral()
-	{
-		if (null !== $this->server('HTTP_REFERER') || $this->server('HTTP_REFERER') == '')
-			return false;
-		else
-			return true;
-	}
+    /**
+     * Check is referral
+     *
+     * @return boolean
+     */
+    public function isReferral()
+    {
+        if (null !== $this->server('HTTP_REFERER') || $this->server('HTTP_REFERER') == '')
+            return false;
+        else
+            return true;
+    }
 
-	/**
-	 * Return Http Referrer
-	 *
-	 * @return string
-	 */
-	public function getReferrer()
-	{
-		return ($this->isReferral()) ? trim($this->server('HTTP_REFERER')) : '';
-	}
+    /**
+     * Return Http Referrer
+     *
+     * @return string
+     */
+    public function getReferrer()
+    {
+        return ($this->isReferral()) ? trim($this->server('HTTP_REFERER')) : '';
+    }
 
-	/**
-	 * Get client IP
-	 *
-	 * @return string
-	 */
-	public function getIp()
-	{
-		$ipaddress = '';
+    /**
+     * Get client IP
+     *
+     * @return string
+     */
+    public function getIp()
+    {
+        $ipaddress = '';
 
-		if (getenv('HTTP_CLIENT_IP'))
-			$ipaddress = getenv('HTTP_CLIENT_IP');
-		else if (getenv('HTTP_X_FORWARDED_FOR'))
-			$ipaddress = getenv('HTTP_X_FORWARDED_FOR');
-		else if (getenv('HTTP_X_FORWARDED'))
-			$ipaddress = getenv('HTTP_X_FORWARDED');
-		else if (getenv('HTTP_FORWARDED_FOR'))
-			$ipaddress = getenv('HTTP_FORWARDED_FOR');
-		else if (getenv('HTTP_FORWARDED'))
-			$ipaddress = getenv('HTTP_FORWARDED');
-		else if (getenv('REMOTE_ADDR'))
-			$ipaddress = getenv('REMOTE_ADDR');
-		else
-			$ipaddress = 'UNKNOWN';
+        if (getenv('HTTP_CLIENT_IP'))
+            $ipaddress = getenv('HTTP_CLIENT_IP');
+        else if (getenv('HTTP_X_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+        else if (getenv('HTTP_X_FORWARDED'))
+            $ipaddress = getenv('HTTP_X_FORWARDED');
+        else if (getenv('HTTP_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_FORWARDED_FOR');
+        else if (getenv('HTTP_FORWARDED'))
+            $ipaddress = getenv('HTTP_FORWARDED');
+        else if (getenv('REMOTE_ADDR'))
+            $ipaddress = getenv('REMOTE_ADDR');
+        else
+            $ipaddress = 'UNKNOWN';
 
-		return $ipaddress;
-	}
+        return $ipaddress;
+    }
 
-	/**
-	 * Filter inputs
-	 *
-	 * @param string $data
-	 * @param boolean $filter
-	 * @return string | null
-	 */
-	public function filter($data = null, $filter = false)
-	{
-		if (is_null($data))
-			return null;
-		else {
-			if (is_array($data))
-				return $filter === true ? array_map([$this, 'xssClean'], $data) : array_map('trim', $data);
-			else
-				return $filter === true ? $this->xssClean($data) : trim($data);
-		}
-	}
+    /**
+     * Filter inputs
+     *
+     * @param string $data
+     * @param boolean $filter
+     * @return string | null
+     */
+    public function filter($data = null, $filter = false)
+    {
+        if (is_null($data))
+            return null;
+        else {
+            if (is_array($data))
+                return $filter === true ? array_map([$this, 'xssClean'], $data) : array_map('trim', $data);
+            else
+                return $filter === true ? $this->xssClean($data) : trim($data);
+        }
+    }
 
-	/**
-	 * Clear XSS
-	 *
-	 * @param string $data
-	 * @return string
-	 */
-	public function xssClean($data)
-	{
-		// Fix &entity\n;
-		$data = str_replace(array('&amp;','&lt;','&gt;'), array('&amp;amp;','&amp;lt;','&amp;gt;'), $data);
+    /**
+     * Clear XSS
+     *
+     * @param string $data
+     * @return string
+     */
+    public function xssClean($data)
+    {
+        // Fix &entity\n;
+        $data = str_replace(array('&amp;','&lt;','&gt;'), array('&amp;amp;','&amp;lt;','&amp;gt;'), $data);
         $data = preg_replace('/(&#*\w+)[\x00-\x20]+;/u', '$1;', $data);
         $data = preg_replace('/(&#x*[0-9A-F]+);*/iu', '$1;', $data);
         $data = html_entity_decode($data, ENT_COMPAT, 'UTF-8');
@@ -542,25 +542,25 @@ class Request
 
         do
         {
-        	// Remove really unwanted tags
-        	$old_data = $data;
-        	$data = preg_replace('#</*(?:applet|b(?:ase|gsound|link)|embed|frame(?:set)?|i(?:frame|layer)|l(?:ayer|ink)|meta|object|s(?:cript|tyle)|title|xml)[^>]*+>#i', '', $data);
+            // Remove really unwanted tags
+            $old_data = $data;
+            $data = preg_replace('#</*(?:applet|b(?:ase|gsound|link)|embed|frame(?:set)?|i(?:frame|layer)|l(?:ayer|ink)|meta|object|s(?:cript|tyle)|title|xml)[^>]*+>#i', '', $data);
         }
         while ($old_data !== $data);
 
         // we are done...
         return $data;
-	}
+    }
 
-	/**
-	 * Clean HTML
-	 *
-	 * @param string $data
-	 * @return string
-	 */
-	public function htmlClean($data)
-	{
-		return strip_tags(htmlentities(trim(stripslashes($data)), ENT_NOQUOTES, "UTF-8"));
-	}
+    /**
+     * Clean HTML
+     *
+     * @param string $data
+     * @return string
+     */
+    public function htmlClean($data)
+    {
+        return strip_tags(htmlentities(trim(stripslashes($data)), ENT_NOQUOTES, "UTF-8"));
+    }
 
 }
