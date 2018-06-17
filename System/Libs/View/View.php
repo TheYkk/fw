@@ -49,6 +49,11 @@ class View
             return "<?php echo __$expression; ?>";
         });
 
+        $compiler->directive('burl', function ($expression)
+        {
+            return "<?php echo base_url$expression; ?>";
+        });
+
         if (is_null($this->theme))
             echo $edge->render($file, $vars);
         else
