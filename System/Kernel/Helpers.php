@@ -138,18 +138,17 @@ if ( ! function_exists('lang') ) {
         array_shift($keys);
         // Find the item that requested
         foreach($keys as $key) {
-            $langa = $langfile[$key];
-
+            $langfile = $langfile[$key];
         }
 
-        /*
-                if (!empty($replace)){
-                    foreach ($replace as $item => $val) {
-                        return str_replace(':'.$item, $val,$langa);
-                    }
-                }else{*/
-        return $langa;
-        //}
+
+        if (!empty($replace)){
+            foreach ($replace as $item => $val) {
+                return str_replace(':'.$item, $val,$langa);
+            }
+        }else{
+            return $langfile;
+        }
 
 
 
