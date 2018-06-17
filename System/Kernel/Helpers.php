@@ -77,13 +77,14 @@ if (!function_exists('set_lang')) {
     function set_lang($lang = '')
     {
         $language = config('app.general.default_lang');
+        $languages = config('app.general.languages');
 
         if (!is_string($lang))
             return false;
 
-        if (empty($lang))
+        if(!$languages[$lang]){
             $lang = $language;
-
+        }
         Session::set(md5('lang'), $lang);
     }
 }
@@ -97,56 +98,62 @@ if (!function_exists('set_lang')) {
  * @return string
  */
 if ( ! function_exists('lang') ) {
-    function lang($file = '', $key = '', $change = '')
+    /**
+     * @param string $params
+     * @param string $change
+     * @return bool|mixed
+     * @throws Exception
+     */
+    function lang($params = '',$replace = [],$locale = null)
     {
-        global $lang;
-
         $config = config('app.general.languages');
 
-        if (!is_string($file) || !is_string($key))
+        $keys 	= explode('.', $params);
+        // Set lang file
+        $file 	= $keys[0];
+        // Get lang file
+        if (!is_string($file))
             return false;
 
-        $appLangDir = APP_DIR . 'Languages/' . ucwords($config[get_lang()]) . '/' . ucwords($file) . '.php';
-        $sysLangDir = SYSTEM_DIR . 'Languages/' . ucwords($config[get_lang()]) . '/' . ucwords($file) . '.php';
+        //Set lang
+        if (is_string($locale))
+            $lan = $locale;
+        else
+            $lan = get_lang();
+
+
+        //Get dirs
+        $appLangDir = APP_DIR . 'Languages/' . ucwords($config[$lan]) . '/' . ucwords($file) . '.php';
+        $sysLangDir = SYSTEM_DIR . 'Languages/' . ucwords($config[$lan]) . '/' . ucwords($file) . '.php';
 
         if (file_exists($appLangDir))
-            require_once $appLangDir;
+            $langfile =  require $appLangDir;
         elseif (file_exists($sysLangDir))
-            require_once $sysLangDir;
+            $langfile =  require $sysLangDir;
         else
             throw new System\Libs\Exception\ExceptionHandler('Dosya bulunamadı', '<b>Language : </b> ' . $file);
 
-        $zone = strtolower($file);
 
-        if (array_key_exists($key, $lang[$zone])) {
-            $str = $lang[$zone][$key];
+        // Remove file item from array
+        array_shift($keys);
+        // Find the item that requested
+        foreach($keys as $key) {
+            $langa = $langfile[$key];
 
-            // Change special words
-            if (!is_array($change)) {
-                if (!empty($change)) {
-                    return str_replace('%s', $change, $str);
-                } else {
-                    return $str;
-                }
-            } else {
-                if (!empty($change)) {
-                    $keys = [];
-                    $vals = [];
-
-                    foreach($change as $key => $value) {
-                        $keys[] = $key;
-                        $vals[] = $value;
-                    }
-
-                    return str_replace($keys, $vals, $str);
-                } else {
-                    return $str;
-                }
-            }
-
-        } else {
-            return false;
         }
+
+        /*
+                if (!empty($replace)){
+                    foreach ($replace as $item => $val) {
+                        return str_replace(':'.$item, $val,$langa);
+                    }
+                }else{*/
+        return $langa;
+        //}
+
+
+
+
     }
 }
 
@@ -261,7 +268,7 @@ if (!function_exists('get_asset')) {
     function get_asset($file, $version = null)
     {
         if (file_exists(ROOT_DIR . '/Public/' . $file))
-            return (is_null($version)) ? PUBLIC_DIR . $file : PUBLIC_DIR . $file . '?' . $version;
+            return (is_null($version)) ? PUBLIC_DIR . $file : PUBLIC_DIR . $file . '?v=' . $version;
         else
             throw new System\Libs\Exception\ExceptionHandler('Dosya bulunamadı', '<b>Asset : </b> ' . $file);
     }
@@ -323,7 +330,6 @@ if (!function_exists('base_url')) {
             return $base_url. $url;
     }
 }
-
 /**
  * Get current url
  *
@@ -409,6 +415,7 @@ if (!function_exists('route')) {
         return link_to(System\Libs\Router\Router::getUrl($name, $params));
     }
 }
+
 
 
 /**
