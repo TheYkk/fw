@@ -11,7 +11,6 @@
  * License	: MIT
  *
  *************************************************/
-
 // Require Composer Autoload
 require_once __DIR__ . '/vendor/autoload.php';
 
