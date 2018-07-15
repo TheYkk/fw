@@ -212,7 +212,7 @@ class DB
         return $this;
     }
 
-    public function where($where, $op = null, $val = null, $type = '', $andOr = "AND")
+    public function where($where, $val = null, $op = null, $type = '', $andOr = "AND")
     {
         if (is_array($where)) {
             $_where = [];
@@ -252,23 +252,23 @@ class DB
         return $this;
     }
 
-    public function orWhere($where, $op = null, $val = null)
+    public function orWhere($where,  $val = null,$op = null)
     {
-        $this->where($where, $op, $val, '', "OR");
+        $this->where($where, $val, $op, '', "OR");
 
         return $this;
     }
 
-    public function notWhere($where, $op = null, $val = null)
+    public function notWhere($where,  $val = null,$op = null)
     {
-        $this->where($where, $op, $val, "NOT ", "AND");
+        $this->where($where, $val, $op, "NOT ", "AND");
 
         return $this;
     }
 
-    public function orNotWhere($where, $op = null, $val = null)
+    public function orNotWhere($where,  $val = null,$op = null)
     {
-        $this->where($where, $op, $val, "NOT ", "OR");
+        $this->where($where,  $val,$op, "NOT ", "OR");
 
         return $this;
     }

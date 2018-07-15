@@ -117,7 +117,7 @@ class Log
 		if (is_array($message))
 			$message = serialize($message);
 
-		$logText = '[' . date('Y-m-d H:i:s') . '] - [' . $level . '] ---> ' . $message;
+		$logText = '[' . date('Y-m-d H:i:s') . '] - [' . strtoupper($level) . '] ---> ' . $message;
 		$this->save($logText);
 	}
 
