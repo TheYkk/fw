@@ -214,7 +214,8 @@ class Request
         if (is_null($param))
             return $this->filesVars;
         else
-            return $this->filesVars[$param];
+            return $this->filesVars[$param] ?? null;
+
     }
 
     /**
