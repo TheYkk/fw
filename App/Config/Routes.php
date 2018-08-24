@@ -19,6 +19,7 @@ Route::set404(function(){
 
 Route::namespace('frontend')->group(function(){
 	Route::get('/', 'Home@index');
+
 });
 
 Route::prefix('frontend')->namespace('frontend')->group(function(){
@@ -26,7 +27,18 @@ Route::prefix('frontend')->namespace('frontend')->group(function(){
 	Route::get('/home', 'Home@index');
 });
 
-Route::prefix('backend')->namespace('backend')->middleware(['auth'])->group(function(){
+Route::prefix('backend')->namespace('backend')->group(function(){
 	Route::get('/', 'Dashboard@index');
 	Route::get('/dashboard', 'Dashboard@index');
+});
+
+
+//Log router
+Route::prefix('log')->middleware(['developer'])->group(function(){
+    Route::get('/',function (){
+        Log::show();
+    });
+    Route::get('/{day}', function ($day){
+        Log::show($day);
+    })->where(['day' => '{digit}']);
 });

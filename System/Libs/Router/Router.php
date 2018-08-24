@@ -51,7 +51,8 @@ class Router
         '{all}'     => '([^/]+)',
         '{num}'     => '([0-9]+)',
         '{alpha}'   => '([a-zA-Z]+)',
-        '{alnum}'   => '([a-zA-Z0-9_-]+)'
+        '{alnum}'   => '([a-zA-Z0-9_-]+)',
+        '{digit}'   => '(\d+)'
     ];
 
     // Namespaces
@@ -571,11 +572,24 @@ class Router
      */
     public function where($expressions)
     {
+        foreach ($expressions as $gul => $gec) {
+            if (@self::$patterns[$gec]) {
+
+                $expressions = [$gul=>self::$patterns[$gec]];
+
+            }
+        }
+
+/*
+        if (array_key_exists(array_values($expressions),self::$patterns)){
+            $expressions = self::$patterns[array_values($expressions)];
+            dd('as',true);
+        }*/
+
         $routeKey= array_search(end(self::$routes), self::$routes);
         $pattern = self::_parseUri(self::$routes[$routeKey]['uri'], $expressions);
         $pattern = '/' . implode('/', $pattern);
         $pattern = '/^' . str_replace('/', '\/', $pattern) . '$/';
-
         self::$routes[$routeKey]['pattern'] = $pattern;
 
         return new self;

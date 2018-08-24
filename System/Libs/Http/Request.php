@@ -95,7 +95,9 @@ class Request
             foreach ($headers as $key => $val) {
                 $headerResponse[$key] = $val;
             }
-            return $headerResponse[ucwords($param)];
+
+            return @$headerResponse[ucwords($param)];
+
         }
     }
 

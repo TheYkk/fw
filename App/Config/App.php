@@ -18,6 +18,7 @@ return [
 	'general'		=> [
 		'languages'					=> ['tr' => 'Turkish', 'en' => 'English'],
 		'default_lang'				=> 'tr',
+        'devoloper_key'             => '[v\#X%*$szXz[Tg_YGFN[-XA7>RT[_\'x'
 	],
 
 	/*
