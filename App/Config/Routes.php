@@ -33,7 +33,7 @@ Route::prefix('backend')->namespace('backend')->group(function(){
 });
 
 
-//Log router
+//Log router  (recommended not to delete)
 Route::prefix('log')->middleware(['developer'])->group(function(){
     Route::get('/',function (){
         Log::show();
