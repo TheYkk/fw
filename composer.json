@@ -26,6 +26,6 @@
 			"System\\": "System"
 		}
 	},
-	"prefer-stable": true,
-    "minimum-stability": "stable"
+  "minimum-stability" : "dev",
+  "prefer-stable" : true
 }
