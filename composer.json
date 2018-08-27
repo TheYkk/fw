@@ -25,5 +25,7 @@
 			"App\\": "App",
 			"System\\": "System"
 		}
-	}
+	},
+	"prefer-stable": true,
+    "minimum-stability": "stable"
 }
