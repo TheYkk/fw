@@ -25,9 +25,5 @@
 			"App\\": "App",
 			"System\\": "System"
 		}
-	},
-	"config": {
-		"preferred-install": "dist"
-	},
-    "minimum-stability": "dev"
+	}
 }
