@@ -10,6 +10,8 @@
  * License	: MIT
  *
  *************************************************/
+
+
 use System\Libs\Router\Router as Route;
 
 Route::set404(function(){
@@ -22,10 +24,6 @@ Route::namespace('frontend')->group(function(){
 
 });
 
-Route::prefix('frontend')->namespace('frontend')->group(function(){
-	Route::any('/', 'Home@index');
-	Route::get('/home', 'Home@index');
-});
 
 Route::prefix('backend')->namespace('backend')->group(function(){
 	Route::get('/', 'Dashboard@index');

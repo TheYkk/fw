@@ -21,7 +21,7 @@ return [
         'devoloper_key'             => '[v\#X%*$szXz[Tg_YGFN[-XA7>RT[_\'x'
 	],
 
-	/*
+	/**
 	 * Session Settings
 	 */
 	'session'		=> [
@@ -31,7 +31,7 @@ return [
 		'lifetime'					=> 3600,
 	],
 
-	/*
+	/**
 	 * Cookie Settings
 	 */
 	'cookie'		=> [
@@ -44,7 +44,7 @@ return [
 		'domain'					=> '',
 	],
 
-	/*
+	/**
 	 * Cache Settings
 	 */
 	'cache'			=> [
@@ -63,6 +63,10 @@ return [
 		'userpass'					=> '',
 		'charset'					=> 'utf-8',
 	],
+
+    /**
+     * Json Web Token
+     */
     'jwt'          => [
         'key'                       => 'A58qILk4IK9ZHi4xyAM7NHJU'
     ]

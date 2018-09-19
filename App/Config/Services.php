@@ -25,6 +25,7 @@ return [
 		'Cookie'			=> System\Libs\Cookie\Cookie::class,
 		'DB'				=> System\Libs\Database\DB::class,
 		'Model'				=> System\Libs\Database\Model::class,
+        'Log'				    => System\Libs\Log\Log::class,
 
         //not used too much
         //        'Pagination'		    => System\Libs\Pagination\Pagination::class,
@@ -59,7 +60,7 @@ return [
 		'Cookie'			=> System\Facades\Cookie::class,
 		'DB'				=> System\Facades\DB::class,
 		'Model'				=> System\Facades\Model::class,
-
+        'Log'				=> System\Facades\Log::class,
         //not used too much
         //        'Event'				=> System\Facades\Event::class,
         //        'Pagination'		    => System\Facades\Pagination::class,
